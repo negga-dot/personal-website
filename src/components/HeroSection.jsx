@@ -118,7 +118,7 @@ export const HeroSection = () => {
                 </motion.a>
               );
             })}
-          </div>
+          </motion.div>
         </div>
       </div>
 
