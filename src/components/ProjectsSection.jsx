@@ -7,30 +7,50 @@ const projects = [
     id: 1,
     title: "SaaS Landing Page",
     description: "A beautiful landing page app using React and Tailwind.",
-    image: "/assets/projects/medicalq.png",
+    image: "/src/assets/projects/portfolio.png",
     tags: ["React", "TailwindCSS", "Supabase"],
     demoUrl: "#",
     githubUrl: "#",
   },
   {
     id: 2,
-    title: "Orbit Analytics Dashboard",
+    title: "MedicalQ",
     description:
-      "Interactive analytics dashboard with data visualization and filtering capabilities.",
-    image: "/assets/projects/project2.png",
+      "Think of it as Quora meets Reddit for Health, powered by verified doctors, real medical data, and AI-driven support",
+    image: "/src/assets/projects/medicalq.png",
+    tags: ["TypeScript", "React", "Node.js", "TailwindCSS", "Express.js", "MongoDB", "OpenAI", "Firebase"],
+    demoUrl: "https://medicalq.vercel.app",
+    githubUrl: "https://github.com/abhinav-phi/MedicalQ",
+  },
+    {
+    id: 3,
+    title: "CarbonTrack",
+    description:
+      "A powerful yet minimal carbon footprint tracking platform built for sustainability-focused individuals and organizations.",
+    image: "/src/assets/projects/carbontrack.png",
     tags: ["TypeScript", "D3.js", "Next.js"],
+    demoUrl: "https://carbontrack-hackathon-r1.vercel.app/",
+    githubUrl: "https://github.com/abhinav-phi/carbontrack-hackathonR1",
+  },
+    {
+    id: 4,
+    title: "CF Helper Tool",
+    description:
+      "A Chrome extension that helps you solve Codeforces problems using AI like GPT-4, Claude, or Gemini. Get solutions in C++, Python, Java, and more with explanations in English or Hinglish.",
+    image: "/src/assets/projects/CF_helper.png",
+    tags: ["Javascript", "Chrome Extension", "OpenAI", "Claude", "Gemini"],
     demoUrl: "#",
-    githubUrl: "#",
+    githubUrl: "https://github.com/abhinav-phi/CF-Helper-Tool",
   },
   {
-    id: 3,
-    title: "E-commerce Platform",
+    id: 5,
+    title: "ToUndo App",
     description:
       "Full-featured e-commerce platform with user authentication and payment processing.",
-    image: "/assets/projects/project3.png",
+    image: "/src/assets/projects/toundo.png",
     tags: ["React", "Node.js", "Stripe"],
-    demoUrl: "#",
-    githubUrl: "#",
+    demoUrl: "https://toundo-app.vercel.app/",
+    githubUrl: "https://github.com/abhinav-phi/to-undo-app",
   },
 ];
 
@@ -116,7 +136,7 @@ export const ProjectsSection = () => {
           <EnhancedButton asChild className="flex items-center mx-auto gap-2">
             <a
               target="_blank"
-              href="https://github.com/machadop1407"
+              href="https://github.com/abhinav-phi"
               rel="noopener noreferrer"
             >
               Check My Github <ArrowRight size={16} />

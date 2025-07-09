@@ -7,7 +7,7 @@ export const HeroSection = () => {
       className="relative min-h-screen flex flex-col items-center justify-center px-4 overflow-hidden"
     >
       {/* Video Background */}
-      <video
+      {/* <video
         className="absolute inset-0 w-full h-full object-cover z-0"
         autoPlay
         muted
@@ -16,7 +16,7 @@ export const HeroSection = () => {
       >
         <source src="/video.mp4" type="video/mp4" />
         Your browser does not support the video tag.
-      </video>
+      </video> */}
       
       {/* Overlay for better text readability */}
       <div className="absolute inset-0 bg-black/40 z-5"></div>
@@ -25,14 +25,14 @@ export const HeroSection = () => {
       <div className="container max-w-4xl mx-auto text-center z-10 relative">
         <div className="space-y-6">
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
-            <span className="opacity-0 animate-fade-in text-white"> Hi, Im</span>
+            <span className="opacity-0 animate-fade-in text-white"> Hi, I'm</span>
             <span className="text-primary opacity-0 animate-fade-in-delay-1">
               {" "}
-              Pedro
+              Abhinav
             </span>
             <span className="text-gradient ml-2 opacity-0 animate-fade-in-delay-2">
               {" "}
-              Machado
+              
             </span>
           </h1>
 
