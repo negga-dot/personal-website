@@ -122,29 +122,49 @@ npm run preview
 
 ```text
 personal-website/
-├── index.html
-├── package.json
-├── vite.config.js
-├── tailwind.config.js
-├── postcss.config.js
-├── .gitignore
-├── README.md
 ├── src/
-│   ├── main.jsx
-│   ├── App.jsx
-│   ├── index.css
-│   ├── components/
-│   │   ├── animations/
-│   │   └── ui/
-│   └── lib/
-├── public/
-├── assets/
-│   ├── awards/
-│   ├── certificates/
-│   ├── logo/
-│   ├── lottie/
-│   ├── projects/
-│   └── skills/
+│   ├── assets/
+│   │   ├── awards/
+│   │   ├── certificates/
+│   │   ├── logo/
+│   │   ├── lottie/
+│   │   │   ├── computer.json
+│   │   │   └── Education.json
+│   │   ├── projects/
+│   │   └── skills/
+│   └── components/
+│       ├── animations/
+│       │   ├── InteractiveElements.jsx
+│       │   ├── ScrollAnimations.jsx
+│       │   └── TextReveal.jsx
+│       ├── ui/
+│       │   ├── button.jsx
+│       │   ├── ModernCard.jsx
+│       │   ├── About.jsx
+│       │   ├── Awards.jsx
+│       │   ├── Certificates.jsx
+│       │   ├── Contact.jsx
+│       │   ├── Education.jsx
+│       │   ├── Img_prop.jsx
+│       │   ├── Menu.jsx
+│       │   ├── Navbar.jsx
+│       │   ├── Project_prop.jsx
+│       │   ├── Projects.jsx
+│       │   ├── Skills.jsx
+│       │   └── SplitText.jsx
+│       └── lib/
+│           └── utils.js
+├── App.jsx
+├── index.css
+├── main.jsx
+├── .gitignore
+├── index.html
+├── package-lock.json
+├── package.json
+├── postcss.config.js
+├── README.md
+├── tailwind.config.js
+└── vite.config.js
 ```
 
 ---
