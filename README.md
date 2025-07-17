@@ -1,3 +1,6 @@
+## 📁 Project Structure
+
+```
 ABHINAVPHI.TECH/
 ├── src/
 │   ├── assets/           # Images and media files
@@ -18,7 +21,11 @@ ABHINAVPHI.TECH/
 ├── vite.config.js       # Vite configuration
 ├── tailwind.config.js   # Tailwind CSS configuration
 └── README.md            # Project documentation
+```
+---
+## 📁 Project Structure
 
+```
 ABHINAVPHI.TECH/
 ├── node_modules/
 ├── src/
@@ -108,3 +115,5 @@ ABHINAVPHI.TECH/
 ├── README.md
 ├── tailwind.config.js
 └── vite.config.js
+```
+
