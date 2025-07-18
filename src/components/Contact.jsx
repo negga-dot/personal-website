@@ -181,7 +181,7 @@ const Contact = () => {
                       variant="outline"
                       className="w-full group border-2 border-blue-600 text-blue-600 dark:text-blue-400 hover:bg-blue-600 hover:text-white shadow-lg hover:shadow-xl transition-all duration-300"
                       size="lg"
-                      onClick={() => window.open("https://github.com/abhinav-phi/Personal-Portfolio", "_blank")}
+                      onClick={() => window.open("https://github.com/abhinav-phi/personal-website", "_blank")}
                     >
                       <Star className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
                       Star Project
