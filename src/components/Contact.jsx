@@ -169,7 +169,7 @@ const Contact = () => {
                     <Button 
                       className="w-full group bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white shadow-lg hover:shadow-xl transition-all duration-300"
                       size="lg"
-                      onClick={() => window.open("https://drive.google.com/file/d/your-resume-file-id/view", "_blank")}
+                      onClick={() => window.open("https://drive.google.com/file/d/1zcInGUrOZN8W7lElse6HEgdE24uPh9Va/view?usp=sharing", "_blank")}
                     >
                       <Download className="w-5 h-5 mr-2 group-hover:translate-y-1 transition-transform" />
                       Resume
