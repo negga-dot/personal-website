@@ -32,7 +32,23 @@ const EducationAnimation = () => {
           ease: "easeInOut"
         }}
       >
-        🎓
+            <div 
+              style={{ 
+                width: '27.5rem', 
+                height: '27.5rem' 
+              }} 
+              className="max-sm:w-72 max-sm:h-72 rounded-2xl bg-gradient-to-br from-white/20 to-white/5 p-3 backdrop-blur-sm border border-white/10 shadow-lg"
+            >
+              <img
+                src={NSUTLogo}
+                alt="NSUT"
+                className="w-full h-full object-contain rounded-xl"
+                onError={(e) => {
+                  e.target.src = "https://via.placeholder.com/440x440/4F46E5/FFFFFF?text=NSUT";
+                }}
+              />
+            </div>
+
       </motion.div>
     </motion.div>
   );
@@ -103,16 +119,12 @@ const Education = () => {
                     whileHover={{ scale: 1.1, rotate: 5 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <div className="w-20 h-20 max-sm:w-16 max-sm:h-16 rounded-2xl bg-gradient-to-br from-white/20 to-white/5 p-3 backdrop-blur-sm border border-white/10 shadow-lg">
-                      <img
-                        src={NSUTLogo}
-                        alt="NSUT"
-                        className="w-full h-full object-contain rounded-xl"
-                        onError={(e) => {
-                          e.target.src = "https://via.placeholder.com/80x80/4F46E5/FFFFFF?text=NSUT";
-                        }}
-                      />
+                    <div className="w-20 h-20 max-sm:w-16 max-sm:h-16 rounded-2xl bg-gradient-to-br from-white/20 to-white/5 p-3 backdrop-blur-sm border border-white/10 shadow-lg flex items-center justify-center">
+                      <span className="text-4xl max-sm:text-3xl">
+                        🎓
+                      </span>
                     </div>
+
                     <motion.div
                       className="absolute -top-1 -right-1 max-sm:top-0 max-sm:right-0 w-6 h-6 max-sm:w-5 max-sm:h-5 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full shadow-lg flex items-center justify-center"
                       animate={{
