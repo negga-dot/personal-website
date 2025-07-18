@@ -14,7 +14,7 @@ import { Button } from "./ui/button";
 import { Download, Star } from "lucide-react";
 
 // Import your X logo
-import xLogo from '../assets/logo/x.png';
+import xLogo from '/assets/logo/x.png';
 
 const socialLinks = [
   {

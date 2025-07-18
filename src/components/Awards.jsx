@@ -7,8 +7,8 @@
     import { Trophy, Award, Medal, Calendar, ExternalLink, Sparkles } from "lucide-react";
 
     // Import your award images
-    import pic1 from '../assets/awards/21-22.jpg';
-    import pic2 from '../assets/awards/23-24.jpg';
+    import pic1 from '/assets/awards/21-22.jpg';
+    import pic2 from '/assets/awards/23-24.jpg';
 
     const awards = [
     {

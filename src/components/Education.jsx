@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ModernCard } from "./ui/ModernCard";
-import NSUTLogo from "../assets/logo/NSUT.png";
+import NSUTLogo from "/assets/logo/NSUT.png";
 import { FadeInText, BlurText } from "./animations/TextReveal";
 import { RevealOnScroll, FloatingElement, ParallaxContainer } from "./animations/ScrollAnimations";
 import { TiltCard } from "./animations/InteractiveElements";

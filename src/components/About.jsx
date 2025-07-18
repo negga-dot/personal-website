@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import Lottie from "lottie-react";
-import computer from "../assets/lottie/computer.json"
+import computer from "/assets/lottie/computer.json"
 import { FadeInText, BlurText, TypewriterText } from "./animations/TextReveal";
 import { FloatingElement, ParallaxContainer } from "./animations/ScrollAnimations";
 import { MagneticButton } from "./animations/InteractiveElements";
