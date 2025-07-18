@@ -9,7 +9,7 @@ import carbontrack from '/assets/projects/carbontrack.png';
 import toundo from '/assets/projects/toundo.png'; 
 import bookstore from '/assets/projects/bookstore.png'; 
 import personal_portfolio from '/assets/projects/portfolio.png'; 
-// import cf_tool from '/assets/projects/cf_tool.png'; 
+import cf_tool from '/assets/projects/cfhelper.png'; 
 import { Github, ExternalLink, Code, Sparkles } from "lucide-react";
 import {
   SiReact,
@@ -52,7 +52,7 @@ const projects = [
   description: "Personal portfolio website created with React and Tailwind CSS featuring modern animations and interactive elements",
   img: personal_portfolio, 
   link: "https://abhinavphi.vercel.app",
-  github_link: "https://github.com/abhinav-phi/portfolio",
+  github_link: "https://github.com/abhinav-phi/personal-website",
   tech: [
     { icon: SiReact, name: "React", color: "text-cyan-500" },
     { icon: SiTailwindcss, name: "TailwindCSS", color: "text-teal-500" },
@@ -66,7 +66,7 @@ const projects = [
   title: "CarbonTrack",
   description: "Carbon footprint tracking platform that helps users estimate, visualize, and reduce their daily emissions with smart analytics.",
   img: carbontrack,
-  link: "", 
+  link: "https://carbontrack-hackathon-r1.vercel.app", 
   github_link: "https://github.com/abhinav-phi/carbontrack",
   tech: [
     { icon: SiReact, name: "React", color: "text-blue-500" },
@@ -79,7 +79,7 @@ const projects = [
   {
   title: "CF-Helper-Tool",
   description: "Chrome extension for competitive programming that assists with Codeforces problem solving using multiple AI models.",
-  img: toundo,
+  img: cf_tool,
   link: "", 
   github_link: "https://github.com/abhinav-phi/CF-Helper-Tool",
   tech: [
@@ -354,14 +354,16 @@ const Projects = () => {
           transition={{ delay: 0.5 }}
         >
           <MagneticButton>
-            <Button
-              size="lg"
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 text-lg rounded-full shadow-xl hover:shadow-2xl transition-all duration-300"
-            >
-              <Github className="w-5 h-5 mr-2" />
-              View All Projects on GitHub
-            </Button>
-          </MagneticButton>
+  <Button
+    size="lg"
+    className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-8 py-4 text-lg rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 group/btn"
+    onClick={() => window.open('https://github.com/abhinav-phi?tab=repositories&q=&type=public&language=&sort=', '_blank')}
+  >
+    <Github className="w-5 h-5 mr-2 group-hover/btn:rotate-12 transition-transform" />
+    View All Projects on GitHub
+  </Button>
+</MagneticButton>
+
         </motion.div>
       </div>
     </section>
