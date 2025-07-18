@@ -24,16 +24,13 @@ const Menu = () => {
           <a href="#skills">Skills</a>
         </li>
         <li>
-          <a href="#awards">Awards</a>
+          <a href="#projects">Projects</a>
         </li>
         <li>
           <a href="#education">Education</a>
         </li>
         <li>
-          <a href="#projects">Projects</a>
-        </li>
-        <li>
-          <a href="#certificates">Certificates</a>
+          <a href="#achievements">Achievements</a>
         </li>
         <li>
           <a href="#contact">Contact</a>
