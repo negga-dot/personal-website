@@ -128,8 +128,7 @@ personal-website/
 │   │   ├── certificates/
 │   │   ├── logo/
 │   │   ├── lottie/
-│   │   │   ├── computer.json
-│   │   │   └── Education.json
+│   │   │   └──computer.json
 │   │   ├── projects/
 │   │   └── skills/
 │   └── components/
