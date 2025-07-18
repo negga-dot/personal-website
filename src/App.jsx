@@ -2,8 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import SplitText from "./components/SplitText";
 import Navbar from "./components/Navbar";
 import About from "./components/About";
-import Awards from "./components/Awards";
-import Certificates from "./components/Certificates";
+import Achievements from "./components/Achievements";
 import Skills from "./components/Skills";
 import Education from "./components/Education";
 import Projects from "./components/Projects";
@@ -166,10 +165,9 @@ const App = () => {
               <Navbar />
               <About />
               <Skills />
-              <Awards />
-              <Education />
               <Projects />
-              <Certificates />
+              <Education />
+              <Achievements />
               <Contact />
             </div>
           </motion.div>
