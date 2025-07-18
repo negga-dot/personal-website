@@ -4,12 +4,12 @@ import { FadeInText, BlurText } from "./animations/TextReveal";
 import { RevealOnScroll } from "./animations/ScrollAnimations";
 import { TiltCard, HoverGlow, MagneticButton } from "./animations/InteractiveElements";
 import { Button } from "./ui/button";
-import medicalq from '../assets/Projects/medicalq.png'; 
-import carbontrack from '../assets/Projects/carbontrack.png'; 
-import toundo from '../assets/Projects/toundo.png'; 
-import bookstore from '../assets/Projects/bookstore.png'; 
-import personal_portfolio from '../assets/Projects/portfolio.png'; 
-// import cf_tool from '../assets/Projects/cf_tool.png'; 
+import medicalq from '../assets/projects/medicalq.png'; 
+import carbontrack from '../assets/projects/carbontrack.png'; 
+import toundo from '../assets/projects/toundo.png'; 
+import bookstore from '../assets/projects/bookstore.png'; 
+import personal_portfolio from '../assets/projects/portfolio.png'; 
+// import cf_tool from '../assets/projects/cf_tool.png'; 
 import { Github, ExternalLink, Code, Sparkles } from "lucide-react";
 // import {
 //   GPT4,

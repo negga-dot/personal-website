@@ -7,8 +7,8 @@
     import { Award, Calendar, Trophy, ExternalLink, Sparkles } from "lucide-react";
 
     
-    import certificate1 from '../assets/Certificates/photo.jpg';
-    import certificate2 from '../assets/Certificates/r1.jpg';
+    import certificate1 from '../assets/certificates/photo.jpg';
+    import certificate2 from '../assets/certificates/r1.jpg';
 
     const certificates = [
             {
