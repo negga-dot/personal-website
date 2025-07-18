@@ -34,8 +34,8 @@ const EducationAnimation = () => {
       >
             <div 
               style={{ 
-                width: '27.5rem', 
-                height: '27.5rem' 
+                width: '22.5rem', 
+                height: '22.5rem' 
               }} 
               className="max-sm:w-72 max-sm:h-72 rounded-2xl bg-gradient-to-br from-white/20 to-white/5 p-3 backdrop-blur-sm border border-white/10 shadow-lg"
             >
