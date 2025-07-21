@@ -205,11 +205,11 @@ const About = () => {
                 transition={{ duration: 0.3 }}
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-cyan-400/20 rounded-xl blur-xl" />
-                <div className="max-w-[650px] shadow-2xl rounded-xl border border-white/20 dark:border-gray-700/30 backdrop-blur-sm relative z-10 bg-gradient-to-br from-white/10 to-white/5 p-8">
+                <div className="max-w-[650px] max-sm:max-w-[350px] shadow-2xl rounded-xl border border-white/20 dark:border-gray-700/30 backdrop-blur-sm relative z-10 bg-gradient-to-br from-white/10 to-white/5 p-8 max-sm:p-4">
                   <Lottie
                     animationData={computer}
                     loop={true}
-                    className="w-full h-full"
+                    className="w-full h-full max-sm:w-full max-sm:h-auto"
                     onError={() => {
                       // Fallback to a simple animated div if Lottie fails
                       console.log("Lottie animation failed, using fallback");
