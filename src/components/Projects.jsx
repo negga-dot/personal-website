@@ -6,7 +6,7 @@ import { TiltCard, HoverGlow, MagneticButton } from "./animations/InteractiveEle
 import { Button } from "./ui/button";
 import medicalq from '/assets/projects/medicalq.png'; 
 import carbontrack from '/assets/projects/carbontrack.png'; 
-import toundo from '/assets/projects/toundo.png'; 
+
 import bookstore from '/assets/projects/bookstore.png'; 
 import personal_portfolio from '/assets/projects/portfolio.png'; 
 import cf_tool from '/assets/projects/cfhelper.png'; 
