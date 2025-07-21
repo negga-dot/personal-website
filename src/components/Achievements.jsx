@@ -10,7 +10,7 @@ import pic2 from '/assets/awards/23-24.jpg';
 import certificate1 from '/assets/certificates/photo.jpg';
 import certificate2 from '/assets/certificates/r1.jpg';
 
-const certificates = [
+const achievements = [
     {
         title: "CodeClash - The Battle of Logic & Code (11th Rank)",
         issuer: "Lets Code Community",
@@ -55,9 +55,9 @@ const certificates = [
     }
 ];
 
-const CertificateCard = ({ certificate, index }) => {
+const AchievementCard = ({ achievement, index }) => {
     const getIcon = () => {
-        switch (certificate.type) {
+        switch (achievement.type) {
             case "Winner":
                 return <Trophy className="w-6 h-6" />;
             case "Achievement":
@@ -68,7 +68,7 @@ const CertificateCard = ({ certificate, index }) => {
     };
 
     const getIconColor = () => {
-        switch (certificate.type) {
+        switch (achievement.type) {
             case "Winner":
                 return "text-yellow-500";
             case "Achievement":
@@ -79,7 +79,7 @@ const CertificateCard = ({ certificate, index }) => {
     };
 
     const getCategoryColor = () => {
-        switch (certificate.category) {
+        switch (achievement.category) {
             case "Frontend":
                 return "bg-gradient-to-r from-blue-600 to-cyan-600";
             case "Academic":
@@ -98,11 +98,11 @@ const CertificateCard = ({ certificate, index }) => {
                     <ModernCard 
                         variant="glass" 
                         className={`h-full group cursor-pointer overflow-hidden relative ${
-                            certificate.featured ? "md:col-span-2 lg:col-span-2" : ""
+                            achievement.featured ? "md:col-span-2 lg:col-span-2" : ""
                         }`}
                     >
                         {/* Featured Badge */}
-                        {certificate.featured && (
+                        {achievement.featured && (
                             <motion.div
                                 className="absolute top-4 right-4 z-20"
                                 initial={{ scale: 0, rotate: -180 }}
@@ -124,17 +124,17 @@ const CertificateCard = ({ certificate, index }) => {
                         />
 
                         <div className="relative z-10 p-6">
-                            {/* Certificate Icon/Image */}
+                            {/* Achievement Icon/Image */}
                             <motion.div
                                 className="relative mb-6 overflow-hidden rounded-xl"
                                 whileHover={{ scale: 1.02 }}
                                 transition={{ duration: 0.3 }}
                             >
                                 <div className="aspect-video bg-gradient-to-br from-blue-100 to-purple-200 dark:from-blue-900/20 dark:to-purple-900/20 rounded-xl overflow-hidden flex items-center justify-center">
-                                    {certificate.img ? (
+                                    {achievement.img ? (
                                         <img
-                                            src={certificate.img}
-                                            alt={certificate.title}
+                                            src={achievement.img}
+                                            alt={achievement.title}
                                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                             onError={(e) => {
                                                 e.target.style.display = 'none';
@@ -154,7 +154,7 @@ const CertificateCard = ({ certificate, index }) => {
                                 </div>
                                 
                                 {/* Overlay Button */}
-                                {certificate.link && (
+                                {achievement.link && (
                                     <motion.div
                                         className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                                         initial={false}
@@ -163,7 +163,7 @@ const CertificateCard = ({ certificate, index }) => {
                                             <Button
                                                 size="sm"
                                                 className="bg-white/90 text-gray-900 hover:bg-white shadow-lg backdrop-blur-sm"
-                                                onClick={() => window.open(certificate.link, '_blank')}
+                                                onClick={() => window.open(achievement.link, '_blank')}
                                             >
                                                 <ExternalLink className="w-4 h-4 mr-2" />
                                                 View Certificate
@@ -173,18 +173,18 @@ const CertificateCard = ({ certificate, index }) => {
                                 )}
                             </motion.div>
 
-                            {/* Certificate Info */}
+                            {/* Achievement Info */}
                             <div className="space-y-4">
                                 <div className="flex items-start justify-between gap-4">
                                     <motion.h3 
                                         className="text-xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent group-hover:from-blue-600 group-hover:to-purple-600 transition-all duration-300"
                                         whileHover={{ scale: 1.02 }}
                                     >
-                                        {certificate.title}
+                                        {achievement.title}
                                     </motion.h3>
                                     
                                     <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${getCategoryColor()} text-white shadow-sm whitespace-nowrap`}>
-                                        {certificate.category}
+                                        {achievement.category}
                                     </span>
                                 </div>
 
@@ -192,19 +192,19 @@ const CertificateCard = ({ certificate, index }) => {
                                 <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
                                     <div className="flex items-center gap-1">
                                         <Award className="w-4 h-4" />
-                                        <span className="font-medium">{certificate.issuer}</span>
+                                        <span className="font-medium">{achievement.issuer || achievement.organization}</span>
                                     </div>
                                     <div className="flex items-center gap-1">
                                         <Calendar className="w-4 h-4" />
-                                        <span>{certificate.date}</span>
+                                        <span>{achievement.date}</span>
                                     </div>
                                 </div>
 
                                 <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                                    {certificate.description}
+                                    {achievement.description}
                                 </p>
 
-                                {/* Certificate Type Badge */}
+                                {/* Achievement Type Badge */}
                                 <div className="flex items-center gap-2">
                                     <motion.div
                                         className={`flex items-center gap-2 px-3 py-2 rounded-lg bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20`}
@@ -215,18 +215,18 @@ const CertificateCard = ({ certificate, index }) => {
                                             {getIcon()}
                                         </div>
                                         <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                                            {certificate.type}
+                                            {achievement.type}
                                         </span>
                                     </motion.div>
                                 </div>
 
                                 {/* Action Button */}
-                                {certificate.link && (
+                                {achievement.link && (
                                     <div className="pt-2">
                                         <MagneticButton className="w-full">
                                             <Button
                                                 className="w-full group/btn bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 shadow-lg"
-                                                onClick={() => window.open(certificate.link, '_blank')}
+                                                onClick={() => window.open(achievement.link, '_blank')}
                                             >
                                                 <ExternalLink className="w-4 h-4 mr-2 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
                                                 View Certificate
@@ -243,10 +243,10 @@ const CertificateCard = ({ certificate, index }) => {
     );
 };
 
-const Certificates = () => {
+const Achievements = () => {
     return (
         <section
-            id="certificates"
+            id="achievements"
             className="relative p-5 mx-20 min-h-screen font-['Poppins'] max-sm:p-2 max-sm:mx-5"
         >
             {/* Background Elements */}
@@ -282,7 +282,7 @@ const Certificates = () => {
                     
                     <FadeInText delay={0.3}>
                         <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                            Certified achievements and professional recognitions
+                            Recognized achievements and professional accomplishments
                         </p>
                     </FadeInText>
                 </div>
@@ -294,10 +294,10 @@ const Certificates = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.8, staggerChildren: 0.1 }}
                 >
-                    {certificates.map((certificate, index) => (
-                        <CertificateCard 
+                    {achievements.map((achievement, index) => (
+                        <AchievementCard 
                             key={index} 
-                            certificate={certificate} 
+                            achievement={achievement} 
                             index={index}
                         />
                     ))}
@@ -307,4 +307,4 @@ const Certificates = () => {
     );
 };
 
-export default Certificates;
+export default Achievements;
