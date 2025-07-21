@@ -5,7 +5,7 @@ import { FadeInText, BlurText } from "./animations/TextReveal";
 import { RevealOnScroll, FloatingElement } from "./animations/ScrollAnimations";
 import { TiltCard, HoverGlow } from "./animations/InteractiveElements";
 
-// Import skill icons from assets/skills folder
+
 import cppIcon from "/assets/skills/cpp.png";
 import pythonIcon from "/assets/skills/python.png";
 import javascriptIcon from "/assets/skills/javascript.png";
@@ -141,12 +141,6 @@ const SkillCard = ({ skill, index }) => {
                 {skill.name}
               </motion.h3>
 
-              <div className="text-center mb-3">
-                <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r ${skill.color} text-white shadow-sm`}>
-                  {skill.category}
-                </span>
-              </div>
-
               {/* Skill Level Bar */}
               <div className="relative">
                 <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mb-2">
@@ -182,7 +176,10 @@ const Skills = () => {
   const filteredSkills = skills.filter(skill => skill.category === selectedCategory);
 
   return (
-    <section className="relative p-5 mx-20 mb-10 font-['Poppins'] max-sm:p-2 max-sm:mx-5 min-h-screen">
+    <section 
+      id="skills"
+      className="relative p-5 mx-20 mb-10 font-['Poppins'] max-sm:p-2 max-sm:mx-5 min-h-screen"
+    >
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
@@ -286,4 +283,3 @@ const Skills = () => {
 };
 
 export default Skills;
-
