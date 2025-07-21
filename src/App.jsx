@@ -1,4 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
+import { memo, useMemo } from "react";
 import SplitText from "./components/SplitText";
 import Navbar from "./components/Navbar";
 import About from "./components/About";
@@ -10,7 +11,36 @@ import Contact from "./components/Contact";
 import HashLoader from "react-spinners/HashLoader";
 import { useState, useEffect } from "react";
 
-const LoadingScreen = ({ loading }) => {
+const LoadingScreen = memo(({ loading }) => {
+  const backgroundElements = useMemo(() => (
+    <div className="absolute inset-0 overflow-hidden">
+      <motion.div
+        className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full blur-3xl"
+        animate={{
+          scale: [1, 1.5, 1],
+          rotate: [0, 180, 360],
+        }}
+        transition={{
+          duration: 4,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      />
+      <motion.div
+        className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl"
+        animate={{
+          scale: [1.5, 1, 1.5],
+          rotate: [360, 180, 0],
+        }}
+        transition={{
+          duration: 5,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      />
+    </div>
+  ), []);
+
   return (
     <AnimatePresence>
       {loading && (
@@ -20,33 +50,7 @@ const LoadingScreen = ({ loading }) => {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.8, ease: "easeInOut" }}
         >
-          {/* Animated Background Elements */}
-          <div className="absolute inset-0 overflow-hidden">
-            <motion.div
-              className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full blur-3xl"
-              animate={{
-                scale: [1, 1.5, 1],
-                rotate: [0, 180, 360],
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            />
-            <motion.div
-              className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl"
-              animate={{
-                scale: [1.5, 1, 1.5],
-                rotate: [360, 180, 0],
-              }}
-              transition={{
-                duration: 5,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            />
-          </div>
+          {backgroundElements}
 
           <div className="relative z-10 text-center">
             {/* Logo Animation */}
@@ -54,11 +58,11 @@ const LoadingScreen = ({ loading }) => {
               initial={{ scale: 0, rotate: -180 }}
               animate={{ scale: 1, rotate: 0 }}
               transition={{ duration: 1, ease: "easeOut" }}
-              className="mb-2"
+              className="mb-4"
             >
               <SplitText
                 text="Abhinav"
-                className="text-4xl font-bold bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent"
+                className="text-4xl max-sm:text-3xl font-bold bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent"
                 delay={100}
                 duration={0.6}
                 ease="power3.out"
@@ -71,7 +75,7 @@ const LoadingScreen = ({ loading }) => {
               />
             </motion.div>
 
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent">
+            <h1 className="text-4xl max-sm:text-3xl font-bold bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent mb-6">
               {"<abhinav.phi/>"}
             </h1>
 
@@ -80,11 +84,12 @@ const LoadingScreen = ({ loading }) => {
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ delay: 0.5, duration: 0.5 }}
+              className="mb-6"
             >
               <HashLoader
                 color="#0891b2"
                 loading={loading}
-                size={60}
+                size={window.innerWidth < 640 ? 45 : 60}
                 aria-label="Loading Spinner"
                 data-testid="loader"
               />
@@ -92,7 +97,7 @@ const LoadingScreen = ({ loading }) => {
 
             {/* Loading Text */}
             <motion.p
-              className="mt-6 text-cyan-400 text-lg font-medium"
+              className="text-cyan-400 text-lg max-sm:text-base font-medium px-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1, duration: 0.5 }}
@@ -104,7 +109,9 @@ const LoadingScreen = ({ loading }) => {
       )}
     </AnimatePresence>
   );
-};
+});
+
+LoadingScreen.displayName = 'LoadingScreen';
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -112,10 +119,45 @@ const App = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 3000);
+    }, 2000); // Reduced loading time
 
     return () => clearTimeout(timer);
   }, []);
+
+  const backgroundElements = useMemo(() => (
+    <>
+      {/* Background */}
+      <div className="fixed inset-0 bg-gradient-to-br from-[#e2e2e2] via-[#f0f0f0] to-[#e8e8e8] dark:from-[#00040f] dark:via-[#001122] dark:to-[#000811] -z-10" />
+
+      {/* Moving Blurs */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none -z-10">
+        <motion.div
+          className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-r from-blue-400/5 to-cyan-400/5 rounded-full blur-3xl"
+          animate={{
+            scale: [1, 1.2, 1],
+            rotate: [0, 90, 180, 270, 360],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
+        <motion.div
+          className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-r from-purple-400/5 to-pink-400/5 rounded-full blur-3xl"
+          animate={{
+            scale: [1.2, 1, 1.2],
+            rotate: [360, 270, 180, 90, 0],
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
+      </div>
+    </>
+  ), []);
 
   return (
     <>
@@ -129,36 +171,7 @@ const App = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="relative"
           >
-            {/* Background */}
-            <div className="fixed inset-0 bg-gradient-to-br from-[#e2e2e2] via-[#f0f0f0] to-[#e8e8e8] dark:from-[#00040f] dark:via-[#001122] dark:to-[#000811] -z-10" />
-
-            {/* Moving Blurs */}
-            <div className="fixed inset-0 overflow-hidden pointer-events-none -z-10">
-              <motion.div
-                className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-r from-blue-400/5 to-cyan-400/5 rounded-full blur-3xl"
-                animate={{
-                  scale: [1, 1.2, 1],
-                  rotate: [0, 90, 180, 270, 360],
-                }}
-                transition={{
-                  duration: 20,
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
-              />
-              <motion.div
-                className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-r from-purple-400/5 to-pink-400/5 rounded-full blur-3xl"
-                animate={{
-                  scale: [1.2, 1, 1.2],
-                  rotate: [360, 270, 180, 90, 0],
-                }}
-                transition={{
-                  duration: 25,
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
-              />
-            </div>
+            {backgroundElements}
 
             {/* Content */}
             <div className="relative z-10">
