@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, memo, useCallback } from "react";
 
-export const TiltCard = ({ children, className = "", maxTilt = 15 }) => {
+export const TiltCard = memo(({ children, className = "", maxTilt = 15 }) => {
   const [rotateX, setRotateX] = useState(0);
   const [rotateY, setRotateY] = useState(0);
 
-  const handleMouseMove = (e) => {
+  const handleMouseMove = useCallback((e) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
@@ -14,12 +14,12 @@ export const TiltCard = ({ children, className = "", maxTilt = 15 }) => {
 
     setRotateX(-rotateXValue);
     setRotateY(rotateYValue);
-  };
+  }, [maxTilt]);
 
-  const handleMouseLeave = () => {
+  const handleMouseLeave = useCallback(() => {
     setRotateX(0);
     setRotateY(0);
-  };
+  }, []);
 
   return (
     <motion.div
@@ -32,8 +32,8 @@ export const TiltCard = ({ children, className = "", maxTilt = 15 }) => {
       }}
       transition={{
         type: "spring",
-        stiffness: 300,
-        damping: 30,
+        stiffness: 400,
+        damping: 40,
       }}
       style={{
         transformStyle: "preserve-3d",
@@ -43,12 +43,14 @@ export const TiltCard = ({ children, className = "", maxTilt = 15 }) => {
       {children}
     </motion.div>
   );
-};
+});
 
-export const MagneticButton = ({ children, className = "", strength = 0.3 }) => {
+TiltCard.displayName = 'TiltCard';
+
+export const MagneticButton = memo(({ children, className = "", strength = 0.3 }) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
-  const handleMouseMove = (e) => {
+  const handleMouseMove = useCallback((e) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
@@ -56,11 +58,11 @@ export const MagneticButton = ({ children, className = "", strength = 0.3 }) => 
     const deltaY = (e.clientY - centerY) * strength;
 
     setPosition({ x: deltaX, y: deltaY });
-  };
+  }, [strength]);
 
-  const handleMouseLeave = () => {
+  const handleMouseLeave = useCallback(() => {
     setPosition({ x: 0, y: 0 });
-  };
+  }, []);
 
   return (
     <motion.div
@@ -70,16 +72,18 @@ export const MagneticButton = ({ children, className = "", strength = 0.3 }) => 
       animate={position}
       transition={{
         type: "spring",
-        stiffness: 300,
-        damping: 30,
+        stiffness: 400,
+        damping: 40,
       }}
     >
       {children}
     </motion.div>
   );
-};
+});
 
-export const HoverGlow = ({ children, className = "", glowColor = "cyan" }) => {
+MagneticButton.displayName = 'MagneticButton';
+
+export const HoverGlow = memo(({ children, className = "" }) => {
   return (
     <motion.div
       className={`relative ${className}`}
@@ -87,9 +91,11 @@ export const HoverGlow = ({ children, className = "", glowColor = "cyan" }) => {
         boxShadow: `0 0 30px rgba(6, 182, 212, 0.5)`,
         scale: 1.02,
       }}
-      transition={{ duration: 0.3 }}
+      transition={{ duration: 0.2 }}
     >
       {children}
     </motion.div>
   );
-};
+});
+
+HoverGlow.displayName = 'HoverGlow';
