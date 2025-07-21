@@ -44,7 +44,7 @@ const MobileMenu = ({ isOpen, onClose, theme, handleTheme }) => {
                     variant="ghost"
                     size="icon"
                     onClick={onClose}
-                    className="rounded-full hover:bg-gray-100 dark:hover:bg-gray-800"
+                    className="rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-900 dark:text-white"
                   >
                     <CgClose className="text-2xl" />
                   </Button>
@@ -87,9 +87,9 @@ const MobileMenu = ({ isOpen, onClose, theme, handleTheme }) => {
                     className="w-full justify-start gap-3 py-3 text-lg font-medium border-2 hover:bg-gray-100 dark:hover:bg-gray-800"
                   >
                     {theme === "dark" ? (
-                      <HiMoon className="text-xl" />
+                      <HiMoon className="text-xl text-white" />
                     ) : (
-                      <HiSun className="text-xl" />
+                      <HiSun className="text-xl text-gray-900" />
                     )}
                     {theme === "dark" ? "Dark Mode" : "Light Mode"}
                   </Button>
@@ -194,7 +194,7 @@ const Navbar = () => {
                     variant="ghost"
                     size="icon"
                     onClick={handleTheme}
-                    className="rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300"
+                    className="rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 text-gray-900 dark:text-white"
                   >
                     <motion.div
                       animate={{ rotate: theme === "dark" ? 180 : 0 }}
@@ -223,7 +223,7 @@ const Navbar = () => {
                   variant="ghost"
                   size="icon"
                   onClick={() => setNav(true)}
-                  className="rounded-full hover:bg-gray-100 dark:hover:bg-gray-800"
+                  className="rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-900 dark:text-white"
                 >
                   <CgMenuRightAlt className="text-2xl" />
                 </Button>
