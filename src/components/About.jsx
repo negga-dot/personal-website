@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { memo } from "react";
 import Lottie from "lottie-react";
 import computer from "/src/lottie/computer.json"
 import { FadeInText, BlurText, TypewriterText } from "./animations/TextReveal";
@@ -62,6 +63,75 @@ const computerAnimation = {
   ]
 };
 
+// Enhanced Computer Animation Component for better mobile support
+const ComputerAnimation = memo(() => {
+  return (
+    <motion.div
+      className="w-full h-full flex items-center justify-center"
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 1, ease: "easeOut" }}
+    >
+      <motion.div
+        className="relative w-full h-full max-w-[500px] max-h-[500px]"
+        animate={{
+          scale: [1, 1.05, 1],
+          rotate: [0, 2, -2, 0],
+        }}
+        transition={{
+          duration: 4,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      >
+        <Lottie
+          animationData={computer}
+          loop={true}
+          className="w-full h-full"
+          style={{
+            maxWidth: '100%',
+            maxHeight: '100%',
+            objectFit: 'contain'
+          }}
+          onError={() => {
+            console.log("Lottie animation failed, using fallback");
+          }}
+        />
+        
+        {/* Fallback content if Lottie fails */}
+        <motion.div
+          className="absolute inset-0 flex items-center justify-center opacity-0"
+          animate={{
+            opacity: [0, 1, 0],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        >
+          <div className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 bg-gradient-to-br from-blue-500/30 to-purple-500/30 rounded-2xl flex items-center justify-center">
+            <motion.div
+              className="text-4xl sm:text-5xl md:text-6xl"
+              animate={{
+                rotate: [0, 360],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "linear"
+              }}
+            >
+              💻
+            </motion.div>
+          </div>
+        </motion.div>
+      </motion.div>
+    </motion.div>
+  );
+});
+
+ComputerAnimation.displayName = 'ComputerAnimation';
 const About = () => {
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -91,7 +161,7 @@ const About = () => {
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
-          className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-blue-400/10 to-cyan-400/10 rounded-full blur-3xl"
+          className="absolute top-20 left-10 w-32 h-32 sm:w-48 sm:h-48 md:w-72 md:h-72 bg-gradient-to-r from-blue-400/10 to-cyan-400/10 rounded-full blur-2xl sm:blur-3xl"
           animate={{
             scale: [1, 1.2, 1],
             rotate: [0, 180, 360],
@@ -103,7 +173,7 @@ const About = () => {
           }}
         />
         <motion.div
-          className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-r from-purple-400/10 to-pink-400/10 rounded-full blur-3xl"
+          className="absolute bottom-20 right-10 w-40 h-40 sm:w-64 sm:h-64 md:w-96 md:h-96 bg-gradient-to-r from-purple-400/10 to-pink-400/10 rounded-full blur-2xl sm:blur-3xl"
           animate={{
             scale: [1.2, 1, 1.2],
             rotate: [360, 180, 0],
@@ -200,21 +270,21 @@ const About = () => {
           <ParallaxContainer speed={0.3}>
             <FloatingElement intensity={15} duration={4}>
               <motion.div
-                className="relative"
+                className="relative w-full max-w-[650px] mx-auto"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-cyan-400/20 rounded-xl blur-xl" />
-                <div className="max-w-[650px] max-sm:max-w-[350px] shadow-2xl rounded-xl border border-white/20 dark:border-gray-700/30 backdrop-blur-sm relative z-10 bg-gradient-to-br from-white/10 to-white/5 p-8 max-sm:p-4">
-                  <Lottie
-                    animationData={computer}
-                    loop={true}
-                    className="w-full h-full max-sm:w-full max-sm:h-auto"
-                    onError={() => {
-                      // Fallback to a simple animated div if Lottie fails
-                      console.log("Lottie animation failed, using fallback");
-                    }}
-                  />
+                {/* Glow Effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-cyan-400/20 rounded-2xl blur-xl" />
+                
+                {/* Main Container */}
+                <div className="relative z-10 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-2xl border border-white/20 dark:border-gray-700/30 shadow-2xl overflow-hidden">
+                  {/* Responsive padding and sizing */}
+                  <div className="p-4 sm:p-6 md:p-8">
+                    <div className="aspect-square w-full max-w-[500px] mx-auto">
+                      <ComputerAnimation />
+                    </div>
+                  </div>
                 </div>
               </motion.div>
             </FloatingElement>

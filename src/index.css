@@ -36,11 +36,51 @@ body {
     }
     
     .blur-3xl {
-        filter: blur(20px);
+        filter: blur(15px);
+    }
+    
+    .blur-2xl {
+        filter: blur(10px);
+    }
+    
+    /* Optimize Lottie animations for mobile */
+    [data-testid="lottie"] {
+        will-change: transform;
+        transform: translateZ(0);
+    }
+}
+
+/* Ensure proper scaling for all screen sizes */
+@media (max-width: 480px) {
+    .blur-3xl {
+        filter: blur(10px);
+    }
+    
+    .blur-2xl {
+        filter: blur(8px);
     }
 }
 
 .split-parent span {
   display: inline-block;
   white-space: pre;
+}
+
+/* Loading screen optimizations */
+.loading-container {
+    min-height: 100vh;
+    min-height: 100dvh; /* Dynamic viewport height for mobile */
+}
+
+/* Ensure proper aspect ratios on mobile */
+.aspect-square {
+    aspect-ratio: 1 / 1;
+}
+
+/* Smooth animations on all devices */
+@media (prefers-reduced-motion: no-preference) {
+    .smooth-animation {
+        animation-duration: 0.3s;
+        animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    }
 }

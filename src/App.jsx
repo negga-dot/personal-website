@@ -15,7 +15,7 @@ const LoadingScreen = memo(({ loading }) => {
   const backgroundElements = useMemo(() => (
     <div className="absolute inset-0 overflow-hidden">
       <motion.div
-        className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full blur-3xl"
+        className="absolute top-1/4 left-1/4 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full blur-2xl sm:blur-3xl"
         animate={{
           scale: [1, 1.5, 1],
           rotate: [0, 180, 360],
@@ -27,7 +27,7 @@ const LoadingScreen = memo(({ loading }) => {
         }}
       />
       <motion.div
-        className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl"
+        className="absolute bottom-1/4 right-1/4 w-40 h-40 sm:w-60 sm:h-60 md:w-80 md:h-80 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-2xl sm:blur-3xl"
         animate={{
           scale: [1.5, 1, 1.5],
           rotate: [360, 180, 0],
@@ -52,17 +52,17 @@ const LoadingScreen = memo(({ loading }) => {
         >
           {backgroundElements}
 
-          <div className="relative z-10 text-center">
+          <div className="relative z-10 text-center px-4 w-full max-w-sm sm:max-w-md">
             {/* Logo Animation */}
             <motion.div
               initial={{ scale: 0, rotate: -180 }}
               animate={{ scale: 1, rotate: 0 }}
               transition={{ duration: 1, ease: "easeOut" }}
-              className="mb-4"
+              className="mb-6"
             >
               <SplitText
                 text="Abhinav"
-                className="text-4xl max-sm:text-3xl font-bold bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent"
+                className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent"
                 delay={100}
                 duration={0.6}
                 ease="power3.out"
@@ -75,21 +75,26 @@ const LoadingScreen = memo(({ loading }) => {
               />
             </motion.div>
 
-            <h1 className="text-4xl max-sm:text-3xl font-bold bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent mb-6">
+            <motion.h1 
+              className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+            >
               {"<abhinav.phi/>"}
-            </h1>
+            </motion.h1>
 
             {/* Loader */}
             <motion.div
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ delay: 0.5, duration: 0.5 }}
-              className="mb-6"
+              className="mb-8 flex justify-center"
             >
               <HashLoader
                 color="#0891b2"
                 loading={loading}
-                size={window.innerWidth < 640 ? 45 : 60}
+                size={typeof window !== 'undefined' && window.innerWidth < 640 ? 40 : 60}
                 aria-label="Loading Spinner"
                 data-testid="loader"
               />
@@ -97,7 +102,7 @@ const LoadingScreen = memo(({ loading }) => {
 
             {/* Loading Text */}
             <motion.p
-              className="text-cyan-400 text-lg max-sm:text-base font-medium px-4"
+              className="text-cyan-400 text-base sm:text-lg font-medium leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1, duration: 0.5 }}
