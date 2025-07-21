@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, memo } from "react";
 
-export const ParallaxContainer = ({ children, speed = 0.5, className = "" }) => {
+export const ParallaxContainer = memo(({ children, speed = 0.5, className = "" }) => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -17,14 +17,12 @@ export const ParallaxContainer = ({ children, speed = 0.5, className = "" }) => 
       </motion.div>
     </div>
   );
-};
+});
 
-export const RevealOnScroll = ({ children, direction = "up", delay = 0, className = "" }) => {
+ParallaxContainer.displayName = 'ParallaxContainer';
+
+export const RevealOnScroll = memo(({ children, direction = "up", delay = 0, className = "" }) => {
   const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start 0.8", "start 0.2"]
-  });
 
   const getInitialPosition = () => {
     switch (direction) {
@@ -36,28 +34,23 @@ export const RevealOnScroll = ({ children, direction = "up", delay = 0, classNam
     }
   };
 
-  const opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
-  const transform = useTransform(scrollYProgress, [0, 1], [
-    getInitialPosition().y || getInitialPosition().x || 0,
-    0
-  ]);
-
   return (
     <motion.div
       ref={ref}
-      style={{
-        opacity,
-        [direction === "left" || direction === "right" ? "x" : "y"]: transform
-      }}
-      transition={{ delay, ease: "easeOut" }}
+      initial={getInitialPosition()}
+      whileInView={{ x: 0, y: 0, opacity: 1 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.6, delay, ease: "easeOut" }}
       className={className}
     >
       {children}
     </motion.div>
   );
-};
+});
 
-export const FloatingElement = ({ children, intensity = 20, duration = 3, className = "" }) => {
+RevealOnScroll.displayName = 'RevealOnScroll';
+
+export const FloatingElement = memo(({ children, intensity = 20, duration = 3, className = "" }) => {
   return (
     <motion.div
       animate={{
@@ -67,11 +60,14 @@ export const FloatingElement = ({ children, intensity = 20, duration = 3, classN
       transition={{
         duration,
         repeat: Infinity,
-        ease: "easeInOut"
+        ease: "easeInOut",
+        repeatType: "reverse"
       }}
       className={className}
     >
       {children}
     </motion.div>
   );
-};
+});
+
+FloatingElement.displayName = 'FloatingElement';
