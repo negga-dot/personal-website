@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
+import { memo } from "react";
 import { TiltCard, HoverGlow } from "../animations/InteractiveElements";
 import { cn } from "../../lib/utils";
 
-export const ModernCard = ({ 
+export const ModernCard = memo(({ 
   children, 
   className = "", 
   variant = "default",
@@ -28,15 +29,17 @@ export const ModernCard = ({
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
       >
         {children}
       </CardWrapper>
     </GlowWrapper>
   );
-};
+});
 
-export const GlassCard = ({ children, className = "" }) => {
+ModernCard.displayName = 'ModernCard';
+
+export const GlassCard = memo(({ children, className = "" }) => {
   return (
     <ModernCard 
       variant="glass" 
@@ -47,4 +50,6 @@ export const GlassCard = ({ children, className = "" }) => {
       {children}
     </ModernCard>
   );
-};
+});
+
+GlassCard.displayName = 'GlassCard';
